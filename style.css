@@ -1,0 +1,164 @@
+/* Neiwa Interactive.
+   Une seule famille (Mona Sans, largeur et graisse variables), une seule couleur d'accent (le bleu du logo),
+   aucun arrondi, aucune ombre, aucun fondu, aucune animation. Les images vont d'un bord à l'autre ou s'alignent sur la grille. */
+
+@font-face {
+  font-family: "Mona Sans";
+  src: url(polices/mona-sans-latin.woff2) format("woff2");
+  font-weight: 200 900; font-stretch: 75% 125%; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "Mona Sans";
+  src: url(polices/mona-sans-latin-ext.woff2) format("woff2");
+  font-weight: 200 900; font-stretch: 75% 125%; font-display: swap;
+  unicode-range: U+0100-02BA, U+1E00-1E9F, U+20A0-20AB;
+}
+
+:root {
+  --papier: #ffffff;
+  --encre: #0b2832;
+  --second: #577280;
+  --filet: #d4dee2;
+  --bleu: #1088b0;
+  --marge: 72px;
+  --large: 1296px;
+}
+[data-theme="sombre"] {
+  --papier: #061318;
+  --encre: #eaf2f4;
+  --second: #8ea6af;
+  --filet: #1a3540;
+  --bleu: #4fbbe0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--papier); }
+body {
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 18px; line-height: 1.55; font-stretch: 100%;
+  color: var(--encre); background: var(--papier);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--second); }
+a:hover { color: var(--bleu); text-decoration-color: var(--bleu); }
+
+.page { max-width: var(--large); margin: 0 auto; padding-left: var(--marge); padding-right: var(--marge); }
+
+h1, h2, h3 { font-weight: 560; }
+h1 { font-size: 46px; line-height: 1.12; font-stretch: 112%; letter-spacing: -0.012em; font-weight: 520; }
+h2 { font-size: 34px; line-height: 1.15; font-stretch: 112%; letter-spacing: -0.008em; }
+h3 { font-size: 21px; line-height: 1.25; font-stretch: 104%; }
+
+/* ---------- Ouverture : l'énoncé à gauche, l'affiche du film contre le bord droit ---------- */
+.ouverture {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(42vw, 640px);
+}
+.ouverture-texte {
+  display: flex; flex-direction: column;
+  padding: 0 64px 0 max(var(--marge), calc((100vw - var(--large)) / 2 + var(--marge)));
+}
+.tete { display: flex; align-items: center; justify-content: space-between; height: 112px; }
+.logo img { height: 64px; width: auto; }
+.logo-sombre { display: none; }
+[data-theme="sombre"] .logo-clair { display: none; }
+[data-theme="sombre"] .logo-sombre { display: block; }
+nav { display: flex; gap: 30px; font-size: 16px; align-items: baseline; }
+nav a { text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+.langue { color: var(--second); margin-left: 8px; }
+.langue b { color: var(--encre); font-weight: 560; }
+
+.enonce { margin-top: auto; padding-top: 48px; max-width: 640px; }
+.enonce p { margin-top: 26px; font-size: 19px; color: var(--second); max-width: 560px; }
+
+.actualite { margin-top: 56px; border-top: 1px solid var(--filet); }
+.actualite > div {
+  display: grid; grid-template-columns: 150px 1fr auto; gap: 16px; align-items: baseline;
+  padding: 15px 0; border-bottom: 1px solid var(--filet); font-size: 17px;
+}
+.actualite dt { color: var(--second); font-size: 15px; }
+.an { color: var(--second); }
+
+.affiche { align-self: start; }
+.affiche img { width: 100%; height: auto; }
+.affiche-legende {
+  grid-column: 2; display: flex; justify-content: space-between; gap: 24px;
+  padding: 14px var(--marge) 0 0; font-size: 15px; color: var(--second);
+}
+.affiche-legende b { color: var(--encre); font-weight: 560; }
+.affiche-legende a { margin-left: 18px; color: var(--encre); white-space: nowrap; }
+
+/* ---------- Catalogue ---------- */
+section { padding-top: 128px; }
+.titre-section { display: flex; align-items: baseline; justify-content: space-between; gap: 40px; padding-bottom: 28px; }
+.titre-section p { color: var(--second); font-size: 17px; }
+
+.sorties { list-style: none; border-top: 1px solid var(--encre); }
+.sorties li {
+  display: grid; grid-template-columns: 104px minmax(0, 1fr) 64px 150px 372px; gap: 28px; align-items: center;
+  padding: 18px 0; border-bottom: 1px solid var(--filet);
+}
+.sorties img { width: 104px; height: 104px; }
+.quoi p { color: var(--second); font-size: 16px; margin-top: 3px; }
+.duree { color: var(--second); font-size: 16px; }
+.sorties .an { font-size: 17px; color: var(--encre); }
+.ecoute { display: flex; gap: 20px; font-size: 16px; justify-content: flex-end; white-space: nowrap; }
+.attente { color: var(--second); }
+
+/* ---------- Orchestre : une image bord à bord, les notes de pochette, une bande continue ---------- */
+#orchestra { padding-top: 144px; }
+.panorama { width: 100%; height: auto; }
+.notes { display: grid; grid-template-columns: 4fr 8fr; gap: 72px; padding-top: 64px; padding-bottom: 72px; }
+.notes-texte p { margin-top: 24px; max-width: 470px; }
+.notes-texte .liens { display: flex; flex-direction: column; gap: 8px; margin-top: 30px; }
+.generique { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; align-content: start; border-top: 1px solid var(--encre); }
+.generique dl > div { display: grid; grid-template-columns: 5fr 6fr; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--filet); font-size: 16px; line-height: 1.4; }
+.generique dt { color: var(--second); font-size: 15px; }
+.bande { display: grid; grid-template-columns: repeat(4, 1fr); }
+.bande img { width: 100%; height: auto; }
+.legende { padding-top: 14px; font-size: 15px; color: var(--second); }
+
+/* ---------- Contact ---------- */
+.contacts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; border-top: 1px solid var(--encre); padding-top: 26px; font-size: 17px; }
+.contacts h3 { font-size: 15px; font-weight: 400; font-stretch: 100%; color: var(--second); margin-bottom: 6px; }
+
+.pied { display: flex; justify-content: space-between; padding-top: 120px; padding-bottom: 44px; font-size: 14px; color: var(--second); }
+
+/* ---------- Téléphone ---------- */
+@media (max-width: 900px) {
+  :root { --marge: 20px; }
+  body { font-size: 17px; }
+  h1 { font-size: 31px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 19px; }
+  .ouverture { grid-template-columns: 1fr; min-height: 0; }
+  .ouverture-texte { padding: 0 var(--marge) 32px; }
+  .tete { height: 84px; }
+  .logo img { height: 46px; }
+  nav { gap: 16px; font-size: 15px; }
+  nav a:nth-child(2), .langue { display: none; }
+  .enonce { margin-top: 0; padding-top: 28px; }
+  .enonce p { font-size: 17px; margin-top: 18px; }
+  .actualite { margin-top: 32px; }
+  .actualite > div { grid-template-columns: 1fr auto; gap: 2px 12px; }
+  .actualite dt { grid-column: 1 / -1; }
+  .affiche-legende { grid-column: 1; padding: 14px var(--marge) 0; flex-direction: column; gap: 6px; }
+  .affiche-legende a { margin: 0 18px 0 0; }
+  section { padding-top: 84px; }
+  .titre-section { flex-direction: column; gap: 8px; padding-bottom: 20px; }
+  .sorties li { grid-template-columns: 84px minmax(0, 1fr); gap: 4px 16px; align-items: start; padding: 16px 0; }
+  .sorties img { width: 84px; height: 84px; grid-row: 1 / span 3; }
+  .sorties .an { display: none; }
+  .duree, .ecoute { grid-column: 2; }
+  .ecoute { justify-content: flex-start; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; }
+  #orchestra { padding-top: 84px; }
+  .notes { grid-template-columns: 1fr; gap: 40px; padding-top: 36px; padding-bottom: 44px; }
+  .generique { grid-template-columns: 1fr; }
+  .generique dl + dl { border-top: 0; }
+  .bande { grid-template-columns: repeat(2, 1fr); }
+  .contacts { grid-template-columns: 1fr; gap: 20px; }
+  .pied { flex-direction: column; gap: 10px; padding-top: 72px; }
+}

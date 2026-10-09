@@ -7,41 +7,44 @@
 <meta name="description" content="Legal notice and privacy statement for neiwainteractive.com.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="img/favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=Figtree:wght@300;400&display=swap">
 <style>
-  /* Mentions legales : une page a part, petite, sobre, sans animation. */
-  :root { --black:#020304; --line:#14181b; --white:#eef1f2; --dim:#7e8a90; --green:#9ade8c;
-          --disp:"Archivo","Helvetica Neue",Arial,sans-serif; --body:"Figtree","Helvetica Neue",Arial,sans-serif;
+  /* Mentions legales : une page a part, petite, sobre, sans animation. Memes couleurs et meme police que l'accueil. */
+  @font-face { font-family: "Mona Sans"; src: url(polices/mona-sans-latin.woff2) format("woff2");
+    font-weight: 200 900; font-stretch: 75% 125%; font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212; }
+  @font-face { font-family: "Mona Sans"; src: url(polices/mona-sans-latin-ext.woff2) format("woff2");
+    font-weight: 200 900; font-stretch: 75% 125%; font-display: swap;
+    unicode-range: U+0100-02BA, U+1E00-1E9F, U+20A0-20AB; }
+  :root { --papier:#ffffff; --filet:#d4dee2; --encre:#0b2832; --second:#577280; --bleu:#1088b0;
+          --police:"Mona Sans","Segoe UI",sans-serif;
           --pad:clamp(22px,6vw,96px); }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--black); color: var(--white); font: 400 14px/1.72 var(--body); -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: var(--papier); color: var(--encre); font: 400 15px/1.7 var(--police); -webkit-font-smoothing: antialiased; }
   .hold { max-width: 980px; margin-inline: auto; padding: clamp(40px,7vh,72px) var(--pad) clamp(56px,9vh,96px); }
-  a { color: var(--green); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgb(154 222 140 / .38); }
-  a:hover { text-decoration-color: var(--green); }
-  :focus-visible { outline: 2px solid #3fb7e0; outline-offset: 4px; }
+  a { color: var(--encre); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--second); }
+  a:hover { color: var(--bleu); text-decoration-color: var(--bleu); }
+  :focus-visible { outline: 2px solid var(--bleu); outline-offset: 4px; }
   .top { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-  .top img { height: 21px; width: auto; display: block; }
-  .top a { font-size: 13px; color: var(--dim); text-decoration-color: rgb(126 138 144 / .4); }
-  .top a:hover { color: var(--white); }
-  h1 { font: 700 clamp(22px,2.6vw,30px)/1.1 var(--disp); letter-spacing: -.028em; margin: clamp(38px,6vh,62px) 0 6px; }
-  .sub { color: var(--dim); font-size: 13px; }
+  .top img { height: 46px; width: auto; display: block; }
+  .top a { font-size: 14px; color: var(--second); }
+  .top a:hover { color: var(--bleu); }
+  h1 { font: 520 clamp(24px,2.8vw,34px)/1.15 var(--police); font-stretch: 112%; letter-spacing: -.01em; margin: clamp(38px,6vh,62px) 0 6px; }
+  .sub { color: var(--second); font-size: 14px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
           gap: 26px clamp(28px,4vw,56px); margin-top: clamp(30px,4vh,44px); }
-  section { border-top: 1px solid var(--line); padding-top: 16px; }
-  h2 { font: 400 12px/1.4 var(--body); letter-spacing: .07em; text-transform: uppercase; color: #9aa5aa; margin: 0 0 8px; }
-  p { margin: 0 0 10px; color: #99a3a8; }
+  section { border-top: 1px solid var(--filet); padding-top: 16px; }
+  h2 { font: 400 14px/1.4 var(--police); color: var(--second); margin: 0 0 8px; }
+  p { margin: 0 0 10px; color: var(--second); }
   p:last-child { margin-bottom: 0; }
-  strong { color: var(--white); font-weight: 400; }
-  footer { border-top: 1px solid var(--line); margin-top: clamp(40px,6vh,64px); padding-top: 22px; color: #6d777d; font-size: 12.5px; }
+  strong { color: var(--encre); font-weight: 560; }
+  footer { border-top: 1px solid var(--filet); margin-top: clamp(40px,6vh,64px); padding-top: 22px; color: var(--second); font-size: 13px; }
 </style>
 </head>
 <body>
 <div class="hold">
 
   <div class="top">
-    <a href="index.html" aria-label="NEIWA INTERACTIVE"><img src="img/neiwa-logo-light.png" alt="NEIWA INTERACTIVE" width="900" height="331"></a>
+    <a href="index.html" aria-label="NEIWA INTERACTIVE"><img src="img/logo-origine.png" alt="NEIWA INTERACTIVE" width="383" height="130"></a>
     <a href="index.html">Back to the site</a>
   </div>
 
