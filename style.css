@@ -33,7 +33,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { background: var(--papier); }
+html { background: var(--papier); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   font-family: "Mona Sans", "Segoe UI", sans-serif;
   font-size: 18px; line-height: 1.55; font-stretch: 100%;
@@ -66,7 +66,7 @@ h3 { font-size: 21px; line-height: 1.25; font-stretch: 104%; }
 [data-theme="sombre"] .logo-clair { display: none; }
 [data-theme="sombre"] .logo-sombre { display: block; }
 nav { display: flex; gap: 30px; font-size: 16px; align-items: baseline; }
-nav a { text-decoration: none; }
+nav a { text-decoration: none; white-space: nowrap; }
 nav a:hover { text-decoration: underline; }
 .langue { color: var(--second); margin-left: 8px; }
 .langue b { color: var(--encre); font-weight: 560; }
@@ -127,6 +127,27 @@ section { padding-top: 128px; }
 
 .pied { display: flex; justify-content: space-between; padding-top: 120px; padding-bottom: 44px; font-size: 14px; color: var(--second); }
 
+/* ---------- Tablette couchée, petit portable : deux colonnes, mais le catalogue se resserre ---------- */
+@media (min-width: 901px) and (max-width: 1200px) {
+  :root { --marge: 40px; }
+  h1 { font-size: 38px; }
+  .ouverture-texte { padding-right: 40px; }
+  .logo img { height: 52px; }
+  nav { gap: 22px; font-size: 15px; }
+  .actualite > div { grid-template-columns: 120px 1fr auto; }
+  .affiche-legende { flex-direction: column; gap: 4px; }
+  .affiche-legende a { margin: 0 18px 0 0; }
+  .sorties li { grid-template-columns: 96px minmax(0, 1fr) 52px 340px; gap: 6px 24px; }
+  .sorties img { width: 96px; height: 96px; grid-column: 1; grid-row: 1 / span 2; }
+  .quoi { grid-column: 2; grid-row: 1 / span 2; }
+  .sorties .an { grid-column: 3; grid-row: 1 / span 2; }
+  .duree { grid-column: 4; grid-row: 1; align-self: end; text-align: right; }
+  .ecoute { grid-column: 4; grid-row: 2; align-self: start; }
+  .notes { grid-template-columns: 1fr; gap: 48px; }
+  .notes-texte p { max-width: 640px; }
+  .contacts { grid-template-columns: repeat(2, 1fr); gap: 32px 28px; }
+}
+
 /* ---------- Téléphone ---------- */
 @media (max-width: 900px) {
   :root { --marge: 20px; }
@@ -138,27 +159,46 @@ section { padding-top: 128px; }
   .ouverture-texte { padding: 0 var(--marge) 32px; }
   .tete { height: 84px; }
   .logo img { height: 46px; }
-  nav { gap: 16px; font-size: 15px; }
-  nav a:nth-child(2), .langue { display: none; }
+  nav { gap: 22px; font-size: 15px; }
+  .langue { display: none; }
   .enonce { margin-top: 0; padding-top: 28px; }
   .enonce p { font-size: 17px; margin-top: 18px; }
   .actualite { margin-top: 32px; }
   .actualite > div { grid-template-columns: 1fr auto; gap: 2px 12px; }
   .actualite dt { grid-column: 1 / -1; }
-  .affiche-legende { grid-column: 1; padding: 14px var(--marge) 0; flex-direction: column; gap: 6px; }
-  .affiche-legende a { margin: 0 18px 0 0; }
+  .affiche-legende { grid-column: 1; padding: 14px var(--marge) 0; flex-direction: column; gap: 0; }
+  .affiche-legende a { margin: 0 22px 0 0; }
   section { padding-top: 84px; }
   .titre-section { flex-direction: column; gap: 8px; padding-bottom: 20px; }
   .sorties li { grid-template-columns: 84px minmax(0, 1fr); gap: 4px 16px; align-items: start; padding: 16px 0; }
   .sorties img { width: 84px; height: 84px; grid-row: 1 / span 3; }
   .sorties .an { display: none; }
   .duree, .ecoute { grid-column: 2; }
-  .ecoute { justify-content: flex-start; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; }
+  .ecoute { justify-content: flex-start; flex-wrap: wrap; gap: 0 22px; margin-top: 0; }
+  .ecoute .attente { padding: 4px 0; }
   #orchestra { padding-top: 84px; }
   .notes { grid-template-columns: 1fr; gap: 40px; padding-top: 36px; padding-bottom: 44px; }
+  .notes-texte .liens { gap: 0; margin-top: 18px; }
   .generique { grid-template-columns: 1fr; }
   .generique dl + dl { border-top: 0; }
   .bande { grid-template-columns: repeat(2, 1fr); }
-  .contacts { grid-template-columns: 1fr; gap: 20px; }
-  .pied { flex-direction: column; gap: 10px; padding-top: 72px; }
+  .contacts { grid-template-columns: 1fr; gap: 10px; padding-top: 22px; }
+  .contacts h3 { margin-bottom: 0; }
+  .contacts p { padding: 6px 0; }
+  .pied { flex-direction: column; gap: 2px; padding-top: 64px; padding-bottom: 32px; }
+}
+
+/* Petit téléphone : le menu passe sous le logo, sur toute la largeur. */
+@media (max-width: 560px) {
+  .tete { height: auto; flex-wrap: wrap; padding-top: 16px; }
+  nav { width: 100%; justify-content: space-between; gap: 0; margin-top: 12px; border-top: 1px solid var(--filet); border-bottom: 1px solid var(--filet); }
+}
+
+/* ---------- Au doigt : chaque lien offre au moins 44 px de haut ---------- */
+@media (max-width: 900px), (pointer: coarse) {
+  nav a, .ecoute a, .affiche-legende a, .notes-texte .liens a, .contacts a, .pied a { display: inline-block; padding: 11px 0; }
+  .pied a { padding: 12px 0; }
+  /* Liens pris dans une phrase : la zone s'étend sans déplacer les lignes. */
+  .actualite a { position: relative; }
+  .actualite a::after { content: ""; position: absolute; left: 0; right: 0; top: -10px; bottom: -10px; }
 }

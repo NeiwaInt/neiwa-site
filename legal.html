@@ -37,7 +37,13 @@
   p { margin: 0 0 10px; color: var(--second); }
   p:last-child { margin-bottom: 0; }
   strong { color: var(--encre); font-weight: 560; }
-  footer { border-top: 1px solid var(--filet); margin-top: clamp(40px,6vh,64px); padding-top: 22px; color: var(--second); font-size: 13px; }
+  footer { border-top: 1px solid var(--filet); margin-top: clamp(40px,6vh,64px); padding-top: 22px; color: var(--second); font-size: 14px; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  /* Au doigt : chaque lien offre au moins 44 px de haut. */
+  @media (max-width: 900px), (pointer: coarse) {
+    .top a + a, footer a, a.seul { display: inline-block; padding: 12px 0; }
+    footer { padding-top: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -64,14 +70,14 @@
 
     <section>
       <h2>Contact</h2>
-      <p><a href="mailto:contact@neiwainteractive.com">contact@neiwainteractive.com</a></p>
+      <p><a class="seul" href="mailto:contact@neiwainteractive.com">contact@neiwainteractive.com</a></p>
       <p>Postal enquiries to the registered office above. We answer e-mail faster.</p>
     </section>
 
     <section>
       <h2>Hosting</h2>
       <p>GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States.<br>
-        <a href="https://github.com" rel="noopener">github.com</a></p>
+        <a class="seul" href="https://github.com" rel="noopener">github.com</a></p>
     </section>
 
     <section>
