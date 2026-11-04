@@ -121,6 +121,11 @@ section { padding-top: 128px; }
 .bande img { width: 100%; height: auto; }
 .legende { padding-top: 14px; font-size: 15px; color: var(--second); }
 
+/* ---------- Aoki Densho : l'affiche, les notes, les personnages ---------- */
+#aoki-densho img { width: 100%; height: auto; }
+#aoki-densho .notes-texte p:first-child { margin-top: 0; color: var(--second); }
+#aoki-densho .generique { margin-top: 48px; }
+
 /* ---------- Contact ---------- */
 .contacts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; border-top: 1px solid var(--encre); padding-top: 26px; font-size: 17px; }
 .contacts h3 { font-size: 15px; font-weight: 400; font-stretch: 100%; color: var(--second); margin-bottom: 6px; }
